@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/aanandpanthangi/jenkins-simple-app.git'
+                // Explicitly fetch 'main' branch only
+                git branch: 'main', url: 'https://github.com/aanandpanthangi/jenkins-simple-app.git'
             }
         }
 
@@ -24,10 +25,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Deploying to staging folder..."
+                echo "Deploying to C:\\staging folder..."
                 bat '''
                     if not exist C:\\staging mkdir C:\\staging
-                    xcopy * C:\\staging /E /I /Y
+                    xcopy . C:\\staging /E /I /Y /H
                 '''
                 echo "App deployed successfully to C:\\staging!"
             }
