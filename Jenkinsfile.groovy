@@ -26,11 +26,12 @@ pipeline {
             steps {
                 echo "Deploying to staging folder..."
                 bat '''
-                if not exist C:\\staging mkdir C:\\staging
-                xcopy * C:\\staging /E /Y
+                    if not exist C:\\staging mkdir C:\\staging
+                    xcopy * C:\\staging /E /I /Y
                 '''
                 echo "App deployed successfully to C:\\staging!"
             }
         }
     }
 }
+
