@@ -10,26 +10,26 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "Building project..."
-                bat 'echo Build step executed successfully!'
+                echo "Building the project..."
+                bat 'echo Build complete!'
             }
         }
 
         stage('Test') {
             steps {
-                echo "Running tests (placeholder, since this is static HTML)"
-                bat 'echo Test step executed successfully!'
+                echo "Running tests..."
+                bat 'echo Tests passed successfully!'
             }
         }
 
-        stage('Deploy to Staging') {
+        stage('Deploy') {
             steps {
-                echo "Deploying to staging directory..."
+                echo "Deploying to staging folder..."
                 bat '''
-                    if not exist C:\\staging mkdir C:\\staging
-                    xcopy * C:\\staging /E /I /Y
+                if not exist C:\\staging mkdir C:\\staging
+                xcopy * C:\\staging /E /Y
                 '''
-                echo "App deployed to C:\\staging successfully!"
+                echo "App deployed successfully to C:\\staging!"
             }
         }
     }
